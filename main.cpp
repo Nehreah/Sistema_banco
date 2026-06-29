@@ -20,6 +20,7 @@ int main(){
   int opcion;
   vista.mostrarMenu();
   std::cin>>opcion;
+  std::cin.ignore();
   while(opcion != 0){
     switch(opcion){
       case 1:
@@ -33,6 +34,9 @@ int main(){
         break;
       case 4:
         control.añadirCliente();
+        break;
+      case 5:
+        control.consultarSaldo();
     }
     vista.mostrarMenu();
     std::cin>>opcion;

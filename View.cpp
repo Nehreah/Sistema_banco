@@ -29,35 +29,35 @@ void View::cargarBanco(int opcion){
                                                                                           ╔════════════════════════════════╗
                                                                                               Cargando base de datos.
                                                                                           ╚════════════════════════════════╝)"<<std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(600));
+    std::this_thread::sleep_for(std::chrono::milliseconds(400));
     limpiarPantalla();
     mostrarTitulo();
     std::cout<<R"(
                                                                                           ╔════════════════════════════════╗
                                                                                               Cargando base de datos..
                                                                                           ╚════════════════════════════════╝)"<<std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(600));
+    std::this_thread::sleep_for(std::chrono::milliseconds(400));
     limpiarPantalla();
     mostrarTitulo();
     std::cout<<R"(
                                                                                           ╔════════════════════════════════╗
                                                                                               Cargando base de datos...
                                                                                           ╚════════════════════════════════╝)"<<std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(600));    
+    std::this_thread::sleep_for(std::chrono::milliseconds(400));    
     limpiarPantalla();
     mostrarTitulo();
     std::cout<<R"(
                                                                                           ╔════════════════════════════════╗
                                                                                               Cargando base de datos.
                                                                                           ╚════════════════════════════════╝)"<<std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(600));    
+    std::this_thread::sleep_for(std::chrono::milliseconds(400));    
     limpiarPantalla();
     mostrarTitulo();
     std::cout<<R"(
                                                                                           ╔════════════════════════════════╗
                                                                                               Cargando base de datos..
                                                                                           ╚════════════════════════════════╝)"<<std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(600));
+    std::this_thread::sleep_for(std::chrono::milliseconds(400));
     limpiarPantalla();
     mostrarTitulo();
     std::cout<<R"(
@@ -73,35 +73,35 @@ void View::cargarBanco(int opcion){
                                                                                           ╔════════════════════════════════╗
                                                                                               Cargando base de datos.
                                                                                           ╚════════════════════════════════╝)"<<std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(600));
+    std::this_thread::sleep_for(std::chrono::milliseconds(400));
     limpiarPantalla();
     mostrarTitulo();
     std::cout<<R"(
                                                                                           ╔════════════════════════════════╗
                                                                                               Cargando base de datos..
                                                                                           ╚════════════════════════════════╝)"<<std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(600));
+    std::this_thread::sleep_for(std::chrono::milliseconds(400));
     limpiarPantalla();
     mostrarTitulo();
     std::cout<<R"(
                                                                                           ╔════════════════════════════════╗
                                                                                               Cargando base de datos...
                                                                                           ╚════════════════════════════════╝)"<<std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(600));    
+    std::this_thread::sleep_for(std::chrono::milliseconds(400));    
     limpiarPantalla();
     mostrarTitulo();
     std::cout<<R"(
                                                                                           ╔════════════════════════════════╗
                                                                                               Cargando base de datos.
                                                                                           ╚════════════════════════════════╝)"<<std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(600));    
+    std::this_thread::sleep_for(std::chrono::milliseconds(400));    
     limpiarPantalla();
     mostrarTitulo();
     std::cout<<R"(
                                                                                           ╔════════════════════════════════╗
                                                                                               Cargando base de datos..
                                                                                           ╚════════════════════════════════╝)"<<std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(600));
+    std::this_thread::sleep_for(std::chrono::milliseconds(400));
     limpiarPantalla();
     mostrarTitulo();
     std::cout<<R"(
@@ -116,6 +116,7 @@ void View::cargarBanco(int opcion){
 
 
 void View::mostrarMenu(){
+
   limpiarPantalla();
   mostrarTitulo();
 
@@ -126,6 +127,7 @@ void View::mostrarMenu(){
                                                                                              2. Transferir saldo 
                                                                                              3. Añadir cuenta 
                                                                                              4. Añadir Cliente 
+                                                                                             5. Consultar Saldo
                                                                                              0. Ingrese cero para cerrar
                                                                                         ╚═════════════════════════════════════╝
                                                                                          Ingrese su opción: )";
@@ -154,7 +156,7 @@ std::tuple<std::string,std::string> View::interfazCrearTitular(){
   std::cout<<"                                                                              Ingrese el tipo del titular: "+tipoTitular<<std::endl;
   std::cout<<"                                                                              Ingrese la fecha de vinculación: "+fechaVinculacion<<std::endl;
   std::cout<<"                                                                          ╚══════════════════════════════════════════════════════════════════════╝"<<std::endl;
-  std::cout<<"                                                                           Fecha Vinculacipon: ";
+  std::cout<<"                                                                           Fecha Vinculación: ";
   std::getline(std::cin, fechaVinculacion);
   
   limpiarPantalla();
@@ -277,4 +279,65 @@ std::tuple<std::string,std::string,std::string> View::interfazCrearCliente(){
 }
 
 
+std::tuple<std::string, int, long> View::interfazTransferencia(){
+    std::string id;
+    int opcion = 0;
+    long dinero = 0;
 
+    limpiarPantalla();
+    mostrarTitulo();
+    std::cout<<"                                                                          ╔══════════════════════════════════════════════════════════════════════╗"<<std::endl;
+    std::cout<<"                                                                              Ingrese el número de cuenta: "+id<<std::endl;
+    std::cout<<"                                                                              ¿Qué desea hacer?: "<<opcion<<std::endl;
+    std::cout<<"                                                                              Cual es el valor de la transferencia: "<<std::to_string(dinero)<<std::endl;
+    std::cout<<"                                                                              1. Consignar dinero"<<std::endl;
+    std::cout<<"                                                                              2. Retirar dinero"<<std::endl;
+    std::cout<<"                                                                          ╚══════════════════════════════════════════════════════════════════════╝"<<std::endl;
+    std::cout<<"                                                                           Número de cuenta: ";
+    std::getline(std::cin,id);
+
+
+
+    limpiarPantalla();
+    mostrarTitulo();
+    std::cout<<"                                                                          ╔══════════════════════════════════════════════════════════════════════╗"<<std::endl;
+    std::cout<<"                                                                              Ingrese el número de cuenta: "+id<<std::endl;
+    std::cout<<"                                                                              ¿Qué desea hacer?: "<<opcion<<std::endl;
+    std::cout<<"                                                                              Cual es el valor de la transferencia: "<<std::to_string(dinero)<<std::endl;
+    std::cout<<"                                                                              1. Consignar dinero"<<std::endl;
+    std::cout<<"                                                                              2. Retirar dinero"<<std::endl;
+    std::cout<<"                                                                          ╚══════════════════════════════════════════════════════════════════════╝"<<std::endl;
+    std::cout<<"                                                                           ¿Qué desea hacer?: ";
+    std::cin>>opcion;
+    std::cin.ignore();
+    
+
+    limpiarPantalla();
+    mostrarTitulo();
+    std::cout<<"                                                                          ╔══════════════════════════════════════════════════════════════════════╗"<<std::endl;
+    std::cout<<"                                                                              Ingrese el número de cuenta: "+id<<std::endl;
+    std::cout<<"                                                                              ¿Qué desea hacer?: "<<opcion<<std::endl;
+    std::cout<<"                                                                              Cual es el valor de la transferencia: "<<std::to_string(dinero)<<std::endl;
+    std::cout<<"                                                                              1. Consignar dinero"<<std::endl;
+    std::cout<<"                                                                              2. Retirar dinero"<<std::endl;
+    std::cout<<"                                                                          ╚══════════════════════════════════════════════════════════════════════╝"<<std::endl;
+    std::cout<<"                                                                           Valor: ";
+    std::cin>>dinero;
+    std::cin.ignore();  
+    std::cout<<std::endl;
+    
+    
+        limpiarPantalla();
+    mostrarTitulo();
+    std::cout<<"                                                                          ╔══════════════════════════════════════════════════════════════════════╗"<<std::endl;
+    std::cout<<"                                                                              Ingrese el número de cuenta: "+id<<std::endl;
+    std::cout<<"                                                                              ¿Qué desea hacer?: "<<opcion<<std::endl;
+    std::cout<<"                                                                              Cual es el valor de la transferencia: "<<std::to_string(dinero)<<std::endl;
+    std::cout<<"                                                                              1. Consignar dinero"<<std::endl;
+    std::cout<<"                                                                              2. Retirar dinero"<<std::endl;
+    std::cout<<"                                                                          ╚══════════════════════════════════════════════════════════════════════╝"<<std::endl;
+    std::cout<<"                                                                           Número de cuenta: ";
+    std::this_thread::sleep_for(std::chrono::milliseconds(1200));
+    
+    return {id, opcion, dinero};
+}

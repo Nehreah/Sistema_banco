@@ -69,6 +69,7 @@ void transferencia();
 
 void limpiar();
 
+void consultarSaldo();
 
 };
 

@@ -159,12 +159,12 @@ void Modelo::crearCliente(int idTitular, std::string identificacion,std::string 
 
 
 void Modelo::consignarDinero(int dinero, int idProceso, std::string idCuenta){
-  std::vector<Titular> titulares = banco.getTitulares();
+  std::vector<Titular>& titulares = banco.getTitulares();
   for(auto& titular: titulares){
     if(titular.getIdTitular() == idProceso){
       std::vector<Cuenta*>& cuentas = titular.getCuentas();
       for (auto& cuenta: cuentas){
-        if(cuenta->getIdTitular() == std::stoi(idCuenta)){
+        if(cuenta->getNumeroCuenta() == idCuenta){
           cuenta->consignarDinero(dinero);
         }
       }
@@ -175,12 +175,12 @@ void Modelo::consignarDinero(int dinero, int idProceso, std::string idCuenta){
 }
 
 void Modelo::retirarDinero(int dinero,int idProceso, std::string idCuenta){
-  std::vector<Titular> titulares = banco.getTitulares();
+  std::vector<Titular>& titulares = banco.getTitulares();
   for(auto& titular: titulares){
     if(titular.getIdTitular() == idProceso){
       std::vector<Cuenta*>& cuentas = titular.getCuentas();
       for (auto& cuenta: cuentas){
-        if(cuenta->getIdTitular() == std::stoi(idCuenta)){
+        if(cuenta->getNumeroCuenta() == idCuenta){
           cuenta->retirarDinero(dinero);
         }
       }
@@ -190,13 +190,13 @@ void Modelo::retirarDinero(int dinero,int idProceso, std::string idCuenta){
   parse.guardar(banco);
 }
 
-int Modelo::consultarSaldo(int idProceso, std::string idCuenta){
-  std::vector<Titular> titulares = banco.getTitulares();
+long Modelo::consultarSaldo(int idProceso, std::string idCuenta){
+  std::vector<Titular>& titulares = banco.getTitulares();
   for(auto& titular: titulares){
     if(titular.getIdTitular() == idProceso){
       std::vector<Cuenta*>& cuentas = titular.getCuentas();
       for (auto& cuenta: cuentas){
-        if(cuenta->getIdTitular() == std::stoi(idCuenta)){
+        if(cuenta->getNumeroCuenta() == idCuenta){
           return cuenta->getSaldo();
         }
       }

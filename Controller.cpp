@@ -56,9 +56,10 @@ void Controller::añadirUsuario(){
       int tipoCuenta;
       std::string identificacion, nombre, telefono;
       
-      std::cout<<"Ingrese el id del titular que desea ingresar. "<<std::endl;
+      std::cout<<"                                                                                         Ingrese el id del titular que desea ingresar: ";
       std::cin>>idTitular;
-      std::cin.ignore();       
+      std::cin.ignore();
+      std::cout<<std::endl;
 
       if(!(modelo.verificarTitular(idTitular))){
         auto[tipoTitular, fechaVinculacion] = vista.interfazCrearTitular();
@@ -69,8 +70,10 @@ void Controller::añadirUsuario(){
         modelo.crearCliente(idTitular, identificacion, nombre, telefono);
       }
       else {
-        std::cout<<"Ya hay un usuario con ese id de titularidad";
+        std::cout<<"                                                                                         Ya hay un usuario con ese id de titularidad"<<std::endl;
       }
+      std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+
 }
 
 void Controller::añadirCuenta(){
@@ -96,7 +99,7 @@ void Controller::añadirCuenta(){
     }
     else {
       std::cout<<"No hay ningún titular con ese ID"<<std::endl;
-      std::this_thread::sleep_for(std::chrono::milliseconds(900));
+      std::this_thread::sleep_for(std::chrono::milliseconds(2000));
     }
 }
 
@@ -115,13 +118,13 @@ void Controller::añadirCliente(){
         modelo.crearCliente(idTitular,identificacion, nombre, telefono);
       }
       else{
-        std::cout<<"Ya existe un cliente con ese id"<<std::endl;
-        std::this_thread::sleep_for(std::chrono::milliseconds(900));
+        std::cout<<"Ya existe un cliente con ese id"<<std::endl<<std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
       }
     }
     else {
-      std::cout<<"No hay ningún titular con ese ID"<<std::endl;
-      std::this_thread::sleep_for(std::chrono::milliseconds(900));
+      std::cout<<"No hay ningún titular con ese ID"<<std::endl<<std::endl;
+      std::this_thread::sleep_for(std::chrono::milliseconds(2000));
     }
 }
 
@@ -129,42 +132,66 @@ void Controller::añadirCliente(){
 void Controller::transferencia(){
       int idTitular;
       std::string idCuenta;
+      int opcion;
+      long dinero;
+      
       std::cout<<"Ingrese el id del titular que desea ingresar. "<<std::endl;
       std::cin>>idTitular;
       std::cin.ignore();
       
-      std::cout<<"Ingrese el id de la cuenta que desea ingresar. "<<std::endl;
-      std::getline(std::cin,idCuenta);
- 
       
       if(modelo.verificarTitular(idTitular)){
-        int opcion;
-        std::cout<<"¿Qué desea hacer?: \n1.Consignar dinero \n2.Retirar dinero"<<std::endl;
-        std::cin>>opcion;
-        std::cin.ignore();
-        
-        int dinero;
-        std::cout<<"¿De cuanto es el valor de la transferencia?: ";
-        std::cin>>dinero;
-        std::cin.ignore();  
-        std::cout<<std::endl;
-        
-        switch(opcion){
-          case 1:
-            modelo.consignarDinero(dinero, idTitular, idCuenta);
-            std::cout<<"Su saldo ahora es: "<<modelo.consultarSaldo(idTitular, idCuenta);
-            break;
-          case 2:
-            modelo.retirarDinero(dinero, idTitular, idCuenta);
-            std::cout<<"Su saldo ahora es: ";
-            modelo.consultarSaldo(idTitular, idCuenta);
+        auto[idCuenta, opcion, dinero] = vista.interfazTransferencia();
+        if(modelo.verificarCuenta(idTitular,idCuenta)){
+
+          
+          switch(opcion){
+            case 1:
+              modelo.consignarDinero(dinero, idTitular, idCuenta);
+              std::cout<<"Su saldo ahora es: "<<std::to_string(modelo.consultarSaldo(idTitular, idCuenta))<<std::endl;
+              std::this_thread::sleep_for(std::chrono::milliseconds(900));
+              break;
+            case 2:
+              modelo.retirarDinero(dinero, idTitular, idCuenta);
+              std::cout<<"Su saldo ahora es: "<<std::to_string(modelo.consultarSaldo(idTitular, idCuenta))<<std::endl;
+              std::this_thread::sleep_for(std::chrono::milliseconds(900));
+          }
+        }//end if verificar cuenta
+        else{
+          std::cout<<"No existe ese número de cuenta"<<std::endl<<std::endl;
+          std::this_thread::sleep_for(std::chrono::milliseconds(2000));
         }
-      }
+      }//end if verificar titular
       else{
-        std::cout<<"No se ha encontrado el titular";
+        std::cout<<"No se ha encontrado el titular"<<std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
       }        
 }
 
 void Controller::limpiar(){
   modelo.limpiar();
+}
+
+
+void Controller::consultarSaldo(){
+     int idTitular;
+      std::string idCuenta;
+      std::cout<<"Ingrese el id del titular que desea ingresar. "<<std::endl;
+      std::cin>>idTitular;
+      std::cin.ignore();
+      
+      std::cout<<"Ingrese el id de la cuenta que desea consultar. "<<std::endl;
+      std::getline(std::cin,idCuenta);
+ 
+      
+      if(modelo.verificarTitular(idTitular)){
+        if(modelo.verificarCuenta(idTitular,idCuenta)){
+          std::cout<<"Su saldo ahora es: "<<std::to_string(modelo.consultarSaldo(idTitular, idCuenta))<<std::endl;
+          std::this_thread::sleep_for(std::chrono::milliseconds(900));
+        }
+        else{
+        std::cout<<"No existe ese número de cuenta"<<std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        }
+      }
 }

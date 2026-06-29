@@ -34,8 +34,8 @@ long CuentaCorriente::getLimiteSobregiro(){
 }
 
 bool CuentaCorriente::retirarDinero(long cantidad){
-  if(cantidad <= saldo+limiteSobregiro){
-    cantidad -=cantidad;
+  if(cantidad <= (saldo+limiteSobregiro)){
+    saldo -= cantidad;
     return true;
   }
   else{

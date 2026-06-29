@@ -14,5 +14,6 @@ void mostrarMenu();
 std::tuple<std::string,std::string> interfazCrearTitular();
 std::tuple<std::string,long,int> interfazCrearCuenta();
 std::tuple<std::string,std::string,std::string> interfazCrearCliente();
+std::tuple<std::string, int, long> interfazTransferencia();
 };
 #endif

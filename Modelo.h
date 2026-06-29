@@ -62,7 +62,7 @@ void crearCuenta(int idTitular, std::string id, long saldo, int tipoCuenta); //S
 void crearCliente(int idTitular, std::string identificacion,std::string nombre,std::string telefono); //Se crea un objeto cliente y se envía al vector cliente.
 void consignarDinero(int dinero,int idProceso, std::string idCuenta);
 void retirarDinero(int dinero,int idProceso, std::string idCuenta);
-int consultarSaldo(int idProceso, std::string idCuenta);
+long consultarSaldo(int idProceso, std::string idCuenta);
 void limpiar();
 };
 
