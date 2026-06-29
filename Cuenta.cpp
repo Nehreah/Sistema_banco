@@ -1,3 +1,21 @@
+/*
+    Proyecto: Sistema Bancario
+    Curso: Fundamentos de Programación Orientada a Objetos (FPOO)
+    Universidad del Valle
+    Archivo: Cuenta.cpp
+    Resumen: Clase base abstracta/polimórfica que define el comportamiento general de una cuenta bancaria asociada a una titularidad.
+
+    Descripción:
+    Este proyecto pretende construir un sistema bancario basado en la creación de titulares que contiene clientes y cuentas.
+    El sistema permitirá la consignación, retiro y consulta de saldo vinculadas a un Id de titularidad.
+
+    Autor:
+    Estudiante: Javier Felipe Contreras Díaz
+    Código: 202535936
+    Email: contreras.javier@correounivalle.edu.co
+        
+    Fecha: Junio 2026
+*/
 #include "Cuenta.h"
 #include <string>
 

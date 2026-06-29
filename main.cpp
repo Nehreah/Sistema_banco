@@ -18,7 +18,7 @@ int main(){
   control.iniciarSistema();
   
   int opcion;
-  std::cout<<"Qué desea hacer: \n1.Crear Usuario \n2.Transferir saldo \n3. Añadir cuenta \n4. Añadir Cliente \n0. Ingrese cero para cerrar."<<std::endl;
+  vista.mostrarMenu();
   std::cin>>opcion;
   while(opcion != 0){
     switch(opcion){
@@ -34,7 +34,7 @@ int main(){
       case 4:
         control.añadirCliente();
     }
-    std::cout<<"Qué desea hacer: \n1.Crear Usuario \n2.Transferir saldo \n3. Añadir cuenta \n4. Añadir Cliente \n0. Ingrese cero para cerrar."<<std::endl;
+    vista.mostrarMenu();
     std::cin>>opcion;
   }
   control.limpiar();

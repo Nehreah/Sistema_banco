@@ -1,5 +1,65 @@
 {
     "banco": {
-        "nombre": "Nehreah"
+        "nombre": "Nehreah",
+        "titular": [
+            {
+                "fechaVinculacion": "12",
+                "idTitular": 11,
+                "tipoTitular": "12"
+            },
+            {
+                "fechaVinculacion": "123",
+                "idTitular": 122,
+                "tipoTitular": "123"
+            },
+            {
+                "fechaVinculacion": "1234",
+                "idTitular": 1234,
+                "tipoTitular": "1234"
+            },
+            {
+                "fechaVinculacion": "1",
+                "idTitular": 1,
+                "tipoTitular": "1"
+            },
+            {
+                "fechaVinculacion": "2",
+                "idTitular": 2,
+                "tipoTitular": "2"
+            },
+            {
+                "fechaVinculacion": "3",
+                "idTitular": 3,
+                "tipoTitular": "3"
+            },
+            {
+                "fechaVinculacion": "4",
+                "idTitular": 4,
+                "tipoTitular": "4"
+            },
+            {
+                "cliente": [
+                    {
+                        "idTitular": 5,
+                        "identificacion": "5",
+                        "nombre": "5",
+                        "telefono": "5"
+                    }
+                ],
+                "cuenta": [
+                    {
+                        "id": "5",
+                        "idTitular": 5,
+                        "limiteSobregiro": 120000,
+                        "saldo": 599999,
+                        "tasaInteres": 0,
+                        "tipoCuenta": "CuentaCorriente"
+                    }
+                ],
+                "fechaVinculacion": "5",
+                "idTitular": 5,
+                "tipoTitular": "5"
+            }
+        ]
     }
 }
